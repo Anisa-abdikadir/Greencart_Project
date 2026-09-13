@@ -54,6 +54,10 @@ export const PlaceOrderCOD = async (req, res) => {
             paymentType: "COD",
         });
 
+        await User.findByIdAndUpdate(userId, {
+         cartItems: {}
+        });
+
         return res.json({success: true,message: "Order placed successfully"
         });
 
@@ -80,21 +84,7 @@ export const PlaceOrderStripe =async(req,res)=>{
 
         let productDate=[];
 
-        //calcilate amouting using items
-    //    let amount = 0;
-
-        // for (const item of items) {
-        //     const product = await Product.findById(item.product);
-
-        //     if (!product) {
-        //         return res.json({
-        //             success: false,message: "Product not found"});
-        //     }
-            
-        //     // amount += product.offerPrice * item.quantity;
-        //     amount += Number(product.offerPrice) * Number(item.quantity);
-            
-        // }
+      
         let amount =await items.reduce(async(acc, item)=>{
             const product =await Product.findById(item.product);
             productDate.push({
@@ -117,6 +107,11 @@ export const PlaceOrderStripe =async(req,res)=>{
             address,
             paymentType: "Online",
         });
+
+         await User.findByIdAndUpdate(userId, {
+         cartItems: {}
+        });
+
         //stripe getway  intialize
         const stripeInstance = new  stripe(process.env.STRIPE_SECRET_KEY);
         // create line items for stripe
