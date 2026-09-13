@@ -4,6 +4,8 @@ import ProductCard from "./ProductCard"
 const BestSeller = () => {
 
   const {products} =useAppContext();
+
+
   return (
     <div className='mt-6'>
         <p className='text-2xl md:text-3xl font-medium'>bestseller</p>

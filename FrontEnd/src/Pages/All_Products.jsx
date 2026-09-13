@@ -4,14 +4,18 @@ import ProductCard from '../Components/ProductCard'
 
 
 const All_Products = () => {
-    const {products ,searchQuary}=useAppContext("");
+    const {products ,searchQuary,navigate}=useAppContext("");
     const [filteredProducts, setFilteredProduts] =useState([  ])
 
     useEffect(()=>{
       if (searchQuary.length > 0) {
+                  navigate("/products")
+
         setFilteredProduts(products.filter(
         product => product.name.toLowerCase().includes(searchQuary.toLowerCase())
-      ))}
+
+      )
+    )}
       else{
         setFilteredProduts(products)
       } 

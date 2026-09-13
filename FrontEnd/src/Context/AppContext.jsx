@@ -137,11 +137,12 @@ const removeFormCart =(itemId)=>{
 
 
 
-    useEffect(()=>{
-        fetchUser()
-        fetchSeller()
-    },[])
-
+    
+    useEffect(() => {
+    fetchUser()
+    fetchSeller()
+    fetchProducts()
+}, [])
 
     //upadtte database cart items
 
