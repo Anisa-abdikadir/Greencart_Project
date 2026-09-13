@@ -17,7 +17,7 @@ const app = express();
 const port = process.env.PORT || 4000;
 
 // Frontend URL
-const allowedOrigins = ["http://localhost:5173"];
+const allowedOrigins = process.env.FTONTEND_URL;
 app.post('/stripe',express.raw({type:'application/json'}),stripewebhook)
 
 // Middleware
