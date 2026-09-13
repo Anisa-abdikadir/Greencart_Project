@@ -21,6 +21,8 @@ const Navbar = () => {
             toast.success(data.message)
              setUser(null);
              navigate('/')
+            navigate('/seller/product-list')
+
             
           }else{
             toast.error(data.message)
